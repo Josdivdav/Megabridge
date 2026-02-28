@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --accent: #5b6cf9;
+  --accent-hover: #4a5be8;
+  --text-dark: #0f172a;
+  --text-muted: #9aa0bb;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --success: #10b981;
+  --error: #ef4444;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Full-screen dark background with radial glow ── */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse 55% 55% at 50% 60%, rgba(80, 100, 220, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(60, 80, 200, 0.2) 0%, transparent 60%),
+    #080d28;
+}
+
+/* ── Card ── */
+.card {
+  background: linear-gradient(160deg, #ffffff 0%, #e8ecf8 100%);
+  border-radius: 36px;
+  padding: 48px 40px 48px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 40px 80px rgba(5, 10, 40, 0.6),
+    0 0 60px rgba(80, 100, 220, 0.15);
+  animation: cardIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Logo / Header ── */
+.logoContainer {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.logoMain {
+  width: 150px;
+}
+
+.logoContainer p {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Pill-shaped input fields ── */
+.inputContainer {
+  display: flex;
+  align-items: center;
+  background: #eef0f8;
+  border: 1.5px solid transparent;
+  border-radius: 100px;
+  padding: 15px 22px;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.inputContainer:hover {
+  background: #e8ebf5;
+}
+
+.inputContainer:focus-within {
+  box-shadow: 0 0 0 3px rgba(91, 108, 249, 0.12);
+  background: #f5f6ff;
+}
+
+.inputContainer.error {
+  border-color: var(--error);
+  background: #fff5f5;
+}
+
+.inputContainer.error:focus-within {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.inputContainer.valid {
+  border-color: var(--success);
+}
+
+.inputContainer.valid:focus-within {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.inputContainer input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  background: transparent;
+  color: var(--text-dark);
+  min-width: 0;
+}
+
+.inputContainer input::placeholder {
+  color: #9aa0bb;
+}
+
+/* Input icons */
+.icon {
+  display: flex;
+  align-items: center;
+  color: #9aa0bb;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+.eyeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9aa0bb;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: color var(--transition);
+}
+
+.eyeBtn:hover {
+  color: var(--accent);
+}
+
+/* Validation message */
+.validationMessage {
+  font-size: 12px;
+  margin: 0 0 14px 22px;
+  color: var(--error);
+  min-height: 18px;
+}
+
+/* Password strength indicator */
+.passwordStrength {
+  margin: 8px 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.strengthBar {
+  height: 4px;
+  background: #e0e4f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strengthFill {
+  height: 100%;
+  width: 0;
+  transition: width var(--transition), background var(--transition);
+  border-radius: 2px;
+}
+
+.strengthFill.weak {
+  width: 33.33%;
+  background: var(--error);
+}
+
+.strengthFill.medium {
+  width: 66.66%;
+  background: #f59e0b;
+}
+
+.strengthFill.strong {
+  width: 100%;
+  background: var(--success);
+}
+
+.strengthText {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.strengthText span {
+  font-weight: 600;
+}
+
+.strengthText.weak span {
+  color: var(--error);
+}
+
+.strengthText.medium span {
+  color: #f59e0b;
+}
+
+.strengthText.strong span {
+  color: var(--success);
+}
+
+/* ── Terms and Conditions ── */
+.termsContainer {
+  display: flex;
+  align-items: flex-start;
+  margin: 16px 0 24px;
+  padding: 0 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c5c9e0;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  background: white;
+  margin-top: 2px;
+}
+
+.checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.checkbox.error {
+  border-color: var(--error);
+}
+
+.termsText {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.termsLink {
+  color: var(--accent);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.termsLink:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* ── Sign Up button ── */
+.signupButton {
+  width: 100%;
+  padding: 17px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 8px 24px rgba(91, 108, 249, 0.4);
+}
+
+.signupButton:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(91, 108, 249, 0.5);
+}
+
+.signupButton:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(91, 108, 249, 0.3);
+}
+
+.signupButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Sign in row ── */
+.signinContainer {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.signinContainer span:first-child {
+  color: var(--text-dark);
+}
+
+.signinLink {
+  color: var(--accent);
+  font-weight: 600;
+  margin-left: 4px;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.signinLink:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .card {
+    padding: 40px 24px 36px;
+    border-radius: 28px;
+  }
+
+  .logoContainer h1 { font-size: 30px; }
+  
+  .termsContainer {
+    align-items: flex-start;
+  }
+  
+  .checkbox {
+    margin-top: 3px;
+  }
+}
